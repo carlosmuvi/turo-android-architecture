@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 project.ext {
     supportLibraryVersion = "26.1.0"
@@ -35,31 +36,31 @@ dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
 
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Google
-    compile "com.android.support:appcompat-v7:$project.supportLibraryVersion"
+    implementation "com.android.support:appcompat-v7:$project.supportLibraryVersion"
 
     // Dagger core
-    annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerVersion"
-    compile "com.google.dagger:dagger:$project.daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$project.daggerVersion"
+    implementation "com.google.dagger:dagger:$project.daggerVersion"
 
     // Dagger Android
-    annotationProcessor "com.google.dagger:dagger-android-processor:$project.daggerVersion"
-    compile "com.google.dagger:dagger-android-support:$project.daggerVersion"
-    compile "com.google.dagger:dagger-android:$project.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$project.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$project.daggerVersion"
+    implementation "com.google.dagger:dagger-android:$project.daggerVersion"
 
     // ReactiveX
-    compile "io.reactivex.rxjava2:rxjava:$project.rxJavaVersion"
-    compile "io.reactivex.rxjava2:rxandroid:$project.rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxAndroidVersion"
 
     // Timber
-    compile "com.jakewharton.timber:timber:$project.timberVersion"
+    implementation "com.jakewharton.timber:timber:$project.timberVersion"
 
     // Lifecycle
-    compile "android.arch.lifecycle:runtime:$project.lifecycleVersion"
-    compile "android.arch.lifecycle:extensions:$project.lifecycleVersion"
-    annotationProcessor "android.arch.lifecycle:compiler:$project.lifecycleVersion"
+    implementation "android.arch.lifecycle:runtime:$project.lifecycleVersion"
+    implementation "android.arch.lifecycle:extensions:$project.lifecycleVersion"
+    kapt "android.arch.lifecycle:compiler:$project.lifecycleVersion"
 
     // Testing
     testImplementation 'junit:junit:4.12'
